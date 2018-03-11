@@ -1,4 +1,4 @@
-package tree_min_height;
+package tree.tree_min_height;
 
 import java.util.*;
 
