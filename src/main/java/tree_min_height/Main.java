@@ -43,7 +43,39 @@ public class Main {
     public static void main(String[] args) {
         Node root = createTree();
 
-        System.out.println("min height = " + getMinHeight_IterativeBFS(root));
+        System.out.println("min height = " + getMinHeight_IterativeDFS(root));
+    }
+
+    private static boolean isLeafNode(Node node) {
+        if (node == null) {
+            return false;
+        }
+
+        return (node.left == null && node.right == null);
+    }
+
+    private static void printStack(Stack<Node> stack) {
+        System.out.print("\nStack = [ ");
+        for (Node n : stack) {
+            System.out.print(n.value + " ");
+        }
+        System.out.println("]");
+    }
+
+    private static Node getTopNode(Stack<Node> stack) {
+        if (stack == null || stack.isEmpty()) {
+            return null;
+        }
+
+        return stack.peek();
+    }
+
+    private static boolean isLastChild(Node parent, Node child) {
+        if (parent == null) {
+            return false;
+        }
+
+        return (parent.right == null || parent.right == child);
     }
 
     private static int getMinHeight_IterativeDFS(Node root) {
@@ -52,28 +84,53 @@ public class Main {
         }
 
         int minHeight = -1;
-        Node curNode = root;
+        int maxHeight = -1;
         Stack<Node> nodeStack = new Stack<>();
 
-        while (curNode != null || !nodeStack.isEmpty()) {
-            while (curNode != null) {
-                nodeStack.push(curNode);
+        nodeStack.push(root);
+
+        while (!nodeStack.isEmpty()) {
+            Node curNode = getTopNode(nodeStack);
+            while (curNode != null && curNode.left != null) {
+                nodeStack.push(curNode.left);
                 curNode = curNode.left;
             }
 
-            curNode = nodeStack.peek();
-            if (curNode.left == null && curNode.right == null) {
-                int height = nodeStack.size();
-                if (minHeight < 0 || height < minHeight) {
-                    minHeight = height;
+            curNode = getTopNode(nodeStack);
+
+            if (isLeafNode(curNode)) {
+                if (maxHeight < 0 || maxHeight < nodeStack.size()) {
+                    maxHeight = nodeStack.size();
                 }
+                if (minHeight < 0 || minHeight > nodeStack.size()) {
+                    minHeight = nodeStack.size();
+                }
+
+                printStack(nodeStack);
+
+                Node topNode;
+                do {
+                    curNode = nodeStack.pop();
+                    printStack(nodeStack);
+
+                    topNode = getTopNode(nodeStack);
+                    if (topNode == null) {
+                        break;
+                    }
+                    if (!isLastChild(topNode, curNode)) {
+                        nodeStack.push(topNode.right);
+                        printStack(nodeStack);
+                        break;
+                    }
+                } while (true);
+            } else {
+                nodeStack.push(curNode.right);
+                printStack(nodeStack);
             }
-
-            curNode = nodeStack.pop();
-            System.out.print(curNode.value + "(" + minHeight + ") ");
-
-            curNode = curNode.right;
         }
+
+        System.out.println("Min Height = " + minHeight);
+        System.out.println("Max Height = " + maxHeight);
 
         return minHeight;
     }
@@ -94,7 +151,7 @@ public class Main {
         while (!levelNodes.isEmpty()) {
             Node curNode = levelNodes.remove(0);
 
-            if (curNode.left == null && curNode.right == null) {
+            if (isLeafNode(curNode)) {
                 if (minHeight <= 0 || height < minHeight) {
                     minHeight = height + 1;
                 }
