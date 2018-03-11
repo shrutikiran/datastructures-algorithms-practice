@@ -2,21 +2,11 @@ package tree.tree_min_height;
 
 import java.util.*;
 
+import tree.Node;
+import tree.TreeHelper;
+
 public class Main {
-
-    private static class Node {
-        private int value;
-        private Node left, right;
-
-        public Node(int value, Node left, Node right) {
-            this.value = value;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
     private static Node createTree() {
-
         Node root = new Node(1,
                 new Node(2,
                         new Node(4,
@@ -29,10 +19,10 @@ public class Main {
                                 null)),
                 new Node(3,
                         new Node(6,
-                                null,
                                 new Node(10,
                                         null,
-                                        new Node(14, null, null))),
+                                        new Node(14, null, null)),
+                                null),
                         new Node(7,
                                 new Node(11, null, null),
                                 null)));
@@ -44,14 +34,6 @@ public class Main {
         Node root = createTree();
 
         System.out.println("min height = " + getMinHeight_IterativeDFS(root));
-    }
-
-    private static boolean isLeafNode(Node node) {
-        if (node == null) {
-            return false;
-        }
-
-        return (node.left == null && node.right == null);
     }
 
     private static void printStack(Stack<Node> stack) {
@@ -70,14 +52,6 @@ public class Main {
         return stack.peek();
     }
 
-    private static boolean isLastChild(Node parent, Node child) {
-        if (parent == null) {
-            return false;
-        }
-
-        return (parent.right == null || parent.right == child);
-    }
-
     private static int getMinHeight_IterativeDFS(Node root) {
         if (root == null) {
             return 0;
@@ -93,20 +67,19 @@ public class Main {
             Node curNode = getTopNode(nodeStack);
             while (curNode != null && curNode.left != null) {
                 nodeStack.push(curNode.left);
+                printStack(nodeStack);
                 curNode = curNode.left;
             }
 
             curNode = getTopNode(nodeStack);
 
-            if (isLeafNode(curNode)) {
+            if (TreeHelper.isLeafNode(curNode)) {
                 if (maxHeight < 0 || maxHeight < nodeStack.size()) {
                     maxHeight = nodeStack.size();
                 }
                 if (minHeight < 0 || minHeight > nodeStack.size()) {
                     minHeight = nodeStack.size();
                 }
-
-                printStack(nodeStack);
 
                 Node topNode;
                 do {
@@ -117,7 +90,7 @@ public class Main {
                     if (topNode == null) {
                         break;
                     }
-                    if (!isLastChild(topNode, curNode)) {
+                    if (!TreeHelper.isLastChild(topNode, curNode)) {
                         nodeStack.push(topNode.right);
                         printStack(nodeStack);
                         break;
@@ -151,7 +124,7 @@ public class Main {
         while (!levelNodes.isEmpty()) {
             Node curNode = levelNodes.remove(0);
 
-            if (isLeafNode(curNode)) {
+            if (TreeHelper.isLeafNode(curNode)) {
                 if (minHeight <= 0 || height < minHeight) {
                     minHeight = height + 1;
                 }
