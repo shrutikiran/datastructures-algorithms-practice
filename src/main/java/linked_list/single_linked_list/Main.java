@@ -13,7 +13,7 @@ public class Main {
         int v = 1;
 
         for (ptr = head; ptr.next == null; ptr = ptr.next) {
-            if (v > 10) {
+            if (v >= 20) {
                 break;
             }
             ptr.next = new SLLNode(v++);
@@ -32,7 +32,6 @@ public class Main {
 
     private static void printList_Reverse_Recursive(SLLNode head) {
         if (head == null) {
-            System.out.println();
             return;
         }
 
@@ -40,11 +39,55 @@ public class Main {
         System.out.print(head.value + " ");
     }
 
-    public static void main(String[] args) {
-        SLLNode head = createList();
+    private static SLLNode reverseList_Recursive(SLLNode head, SLLNode previous) {
+        if (head == null) {
+            return previous;
+        }
 
+        SLLNode next = head.next;
+        head.next = previous;
+        return reverseList_Recursive(next, head);
+    }
+
+    private static SLLNode reverseList_Iterative(SLLNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        SLLNode previous, current, next;
+
+        previous = null; current = head; next = head.next;
+
+        while (current != null) {
+            current.next = previous;
+            previous = current;
+            current = next;
+            next = (next != null) ? next.next : null;
+        }
+
+        return previous;
+    }
+
+    public static void main(String[] args) {
+        SLLNode head;
+        SLLNode reverse;
+
+        head = createList();
         printList(head);
 
+        System.out.print("Print Reverse (Recursive) = ");
         printList_Reverse_Recursive(head);
+        System.out.println();
+
+        System.out.print("Reverse (Recursive) = ");
+        reverse = reverseList_Recursive(head, null);
+        printList(reverse);
+        System.out.println();
+
+        head = createList();
+        System.out.print("Reverse (Iterative) = ");
+        reverse = reverseList_Iterative(head);
+        printList(reverse);
+        System.out.println();
     }
 }
