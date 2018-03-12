@@ -22,6 +22,29 @@ public class SLLTests {
         return head;
     }
 
+    private static SLLNode createListWithLoop() {
+        SLLNode head;
+
+        head = new SLLNode(0);
+
+        SLLNode ptr, tempNode = null;
+        int v = 1;
+
+        for (ptr = head; ptr.next == null; ptr = ptr.next) {
+            if (v >= 20) {
+                break;
+            }
+            if (v == 10) {
+                tempNode = ptr;
+            }
+            ptr.next = new SLLNode(v++);
+        }
+
+        ptr.next = tempNode;
+
+        return head;
+    }
+
     private static void printList(SLLNode head) {
         while (head != null) {
             System.out.print(head.value + " ");
@@ -68,6 +91,29 @@ public class SLLTests {
         return previous;
     }
 
+    private static boolean hasLoop(SLLNode head) {
+        if (head == null) {
+            return false;
+        }
+
+        if (head.next == head) {
+            return true;
+        }
+
+        SLLNode fastRef = head, slowRef = head;
+
+        while (slowRef != null && fastRef != null && fastRef.next != null) {
+            slowRef = slowRef.next;
+            fastRef = fastRef.next.next;
+
+            if (slowRef == fastRef) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static void main(String[] args) {
         SLLNode head;
         SLLNode reverse;
@@ -89,5 +135,8 @@ public class SLLTests {
         reverse = reverseList_Iterative(head);
         printList(reverse);
         System.out.println();
+
+        head = createListWithLoop();
+        System.out.println("has loop = " + hasLoop(head));
     }
 }

@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a4a2788-8836-41c2-874f-0a7b519a7c6a" name="Default" comment="Rename test packages anclasses">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/linked_list/single_linked_list/Main.java" afterPath="$PROJECT_DIR$/src/main/java/linked_list/single_linked_list/SLLTests.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tree/traversals/Main.java" afterPath="$PROJECT_DIR$/src/main/java/tree/traversals/TreeTraversalTests.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/tree/tree_min_height/Main.java" afterPath="$PROJECT_DIR$/src/main/java/tree/tree_height/TreeHeightTests.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/linked_list/single_linked_list/SLLTests.java" afterPath="$PROJECT_DIR$/src/main/java/linked_list/single_linked_list/SLLTests.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,15 +13,15 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FavoritesManager">
-    <favorites_list name="ds-algorithms-practice" />
+    <favorites_list name="datastructures-algorithms-practice" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="SLLTests.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/linked_list/single_linked_list/SLLTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="56" column="22" lean-forward="false" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
+            <state relative-caret-position="362">
+              <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -88,7 +84,7 @@
           <expand>
             <path>
               <item name="Root" type="cbb8eebc:String" user="Root" />
-              <item name="ds-algorithms-practice" type="cbb8eebc:String" user="ds-algorithms-practice" />
+              <item name="datastructures-algorithms-practice" type="cbb8eebc:String" user="datastructures-algorithms-practice" />
             </path>
           </expand>
           <select />
@@ -99,62 +95,62 @@
         <subPane>
           <expand>
             <path>
-              <item name="ds-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ds-algorithms-practice" type="462c0819:PsiDirectoryNode" />
+              <item name="datastructures-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datastructures-algorithms-practice" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ds-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ds-algorithms-practice" type="462c0819:PsiDirectoryNode" />
+              <item name="datastructures-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datastructures-algorithms-practice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ds-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ds-algorithms-practice" type="462c0819:PsiDirectoryNode" />
+              <item name="datastructures-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datastructures-algorithms-practice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ds-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ds-algorithms-practice" type="462c0819:PsiDirectoryNode" />
+              <item name="datastructures-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datastructures-algorithms-practice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ds-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ds-algorithms-practice" type="462c0819:PsiDirectoryNode" />
+              <item name="datastructures-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datastructures-algorithms-practice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="linked_list" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ds-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ds-algorithms-practice" type="462c0819:PsiDirectoryNode" />
+              <item name="datastructures-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datastructures-algorithms-practice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="single_linked_list" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ds-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ds-algorithms-practice" type="462c0819:PsiDirectoryNode" />
+              <item name="datastructures-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datastructures-algorithms-practice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="tree" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ds-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ds-algorithms-practice" type="462c0819:PsiDirectoryNode" />
+              <item name="datastructures-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datastructures-algorithms-practice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="traversals" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="ds-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ds-algorithms-practice" type="462c0819:PsiDirectoryNode" />
+              <item name="datastructures-algorithms-practice" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datastructures-algorithms-practice" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -211,7 +207,7 @@
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="ds-algorithms-practice" />
+      <module name="datastructures-algorithms-practice" />
       <envs />
     </configuration>
     <configuration name="TreeHeightTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -230,7 +226,7 @@
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="ds-algorithms-practice" />
+      <module name="datastructures-algorithms-practice" />
       <envs />
     </configuration>
     <configuration name="TreeTraversalTests" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -249,7 +245,7 @@
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="ds-algorithms-practice" />
+      <module name="datastructures-algorithms-practice" />
       <envs />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -370,17 +366,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1600" height="812" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.49743262" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32914925" sideWeight="0.49743262" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.49743262" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32914925" sideWeight="0.5025674" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32914925" sideWeight="0.5231066" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.47946084" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.4749679" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.47689345" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.47240052" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.49743262" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -547,14 +544,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ds-algorithms-practice.iml">
+    <entry file="file://$PROJECT_DIR$/datastructures-algorithms-practice.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ds-algorithms-practice.iml">
+    <entry file="file://$PROJECT_DIR$/datastructures-algorithms-practice.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -571,7 +568,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ds-algorithms-practice.iml">
+    <entry file="file://$PROJECT_DIR$/datastructures-algorithms-practice.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
@@ -698,14 +695,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ds-algorithms-practice.iml">
+    <entry file="file://$PROJECT_DIR$/datastructures-algorithms-practice.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ds-algorithms-practice.iml">
+    <entry file="file://$PROJECT_DIR$/datastructures-algorithms-practice.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -722,7 +719,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ds-algorithms-practice.iml">
+    <entry file="file://$PROJECT_DIR$/datastructures-algorithms-practice.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="9" lean-forward="true" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
@@ -788,8 +785,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/linked_list/single_linked_list/SLLTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="56" column="22" lean-forward="false" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
+        <state relative-caret-position="362">
+          <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -846,7 +843,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>ds-algorithms-practice</last-edited>
+          <last-edited>datastructures-algorithms-practice</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
