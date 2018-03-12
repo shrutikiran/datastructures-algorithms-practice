@@ -1,11 +1,11 @@
-package tree.tree_min_height;
+package tree.tree_height;
 
 import java.util.*;
 
 import tree.Node;
 import tree.TreeHelper;
 
-public class Main {
+public class TreeHeightTests {
     private static Node createTree() {
         Node root = new Node(1,
                 new Node(2,

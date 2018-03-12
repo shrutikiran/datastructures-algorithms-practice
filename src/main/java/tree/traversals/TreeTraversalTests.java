@@ -5,7 +5,7 @@ import java.util.Stack;
 import tree.Node;
 import tree.TreeHelper;
 
-public class Main {
+public class TreeTraversalTests {
 
     private static Node createTree() {
         Node root = new Node(1,

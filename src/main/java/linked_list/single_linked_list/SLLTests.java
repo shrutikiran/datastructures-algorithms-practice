@@ -2,7 +2,7 @@ package linked_list.single_linked_list;
 
 import linked_list.SLLNode;
 
-public class Main {
+public class SLLTests {
 
     private static SLLNode createList() {
         SLLNode head;
