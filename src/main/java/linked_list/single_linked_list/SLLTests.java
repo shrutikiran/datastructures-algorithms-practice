@@ -91,6 +91,38 @@ public class SLLTests {
         return previous;
     }
 
+    private static SLLNode nthNodeFromLast_Iterative(SLLNode head, int pos) {
+        if (head == null) {
+            return null;
+        }
+
+        SLLNode nthNode = head;
+        while (head != null) {
+            head = head.next;
+            if (--pos >= 0) {
+                continue;
+            }
+            nthNode = nthNode.next;
+        }
+
+        return nthNode;
+    }
+
+    private static SLLNode midNode(SLLNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        SLLNode fastRef = head, slowRef = head;
+
+        while (slowRef != null && fastRef != null && fastRef.next != null) {
+            slowRef = slowRef.next;
+            fastRef = fastRef.next.next;
+        }
+
+        return slowRef;
+    }
+
     private static boolean hasLoop(SLLNode head) {
         if (head == null) {
             return false;
@@ -115,8 +147,7 @@ public class SLLTests {
     }
 
     public static void main(String[] args) {
-        SLLNode head;
-        SLLNode reverse;
+        SLLNode head, reverse, ptr;
 
         head = createList();
         printList(head);
@@ -135,6 +166,16 @@ public class SLLTests {
         reverse = reverseList_Iterative(head);
         printList(reverse);
         System.out.println();
+
+        head = createList();
+        System.out.print("5th node from last (Iterative) = ");
+        ptr = nthNodeFromLast_Iterative(head, 5);
+        System.out.println(ptr == null ? "null" : ptr.value);
+
+        head = createList();
+        System.out.print("Middle node = ");
+        ptr = midNode(head);
+        System.out.println(ptr == null ? "null" : ptr.value);
 
         head = createListWithLoop();
         System.out.println("has loop = " + hasLoop(head));
