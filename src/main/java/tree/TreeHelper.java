@@ -78,8 +78,7 @@ public class TreeHelper {
                 continue;
             }
 
-            BinaryTreeNode node = nodeStack.pop();
-            nodeOperation.run(node);
+            BinaryTreeNode node = null;
 
             for (topNode = getTopNode(nodeStack); isLastChild(topNode, node); topNode = getTopNode(nodeStack)) {
                 node = nodeStack.pop();
