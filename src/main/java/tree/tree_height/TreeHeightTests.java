@@ -2,49 +2,49 @@ package tree.tree_height;
 
 import java.util.*;
 
-import tree.Node;
+import tree.BinaryTreeNode;
 import tree.TreeHelper;
 
 public class TreeHeightTests {
-    private static Node createTree() {
-        Node root = new Node(1,
-                new Node(2,
-                        new Node(4,
-                                new Node(8,
-                                        new Node(12, null, null),
-                                        new Node(13, null, null)),
+    private static BinaryTreeNode createTree() {
+        BinaryTreeNode root = new BinaryTreeNode(1,
+                new BinaryTreeNode(2,
+                        new BinaryTreeNode(4,
+                                new BinaryTreeNode(8,
+                                        new BinaryTreeNode(12, null, null),
+                                        new BinaryTreeNode(13, null, null)),
                                 null),
-                        new Node(5,
-                                new Node(9, null, null),
+                        new BinaryTreeNode(5,
+                                new BinaryTreeNode(9, null, null),
                                 null)),
-                new Node(3,
-                        new Node(6,
-                                new Node(10,
+                new BinaryTreeNode(3,
+                        new BinaryTreeNode(6,
+                                new BinaryTreeNode(10,
                                         null,
-                                        new Node(14, null, null)),
+                                        new BinaryTreeNode(14, null, null)),
                                 null),
-                        new Node(7,
-                                new Node(11, null, null),
+                        new BinaryTreeNode(7,
+                                new BinaryTreeNode(11, null, null),
                                 null)));
 
         return root;
     }
 
     public static void main(String[] args) {
-        Node root = createTree();
+        BinaryTreeNode root = createTree();
 
         System.out.println("min height = " + getMinHeight_IterativeDFS(root));
     }
 
-    private static void printStack(Stack<Node> stack) {
+    private static void printStack(Stack<BinaryTreeNode> stack) {
         System.out.print("\nStack = [ ");
-        for (Node n : stack) {
+        for (BinaryTreeNode n : stack) {
             System.out.print(n.value + " ");
         }
         System.out.println("]");
     }
 
-    private static Node getTopNode(Stack<Node> stack) {
+    private static BinaryTreeNode getTopNode(Stack<BinaryTreeNode> stack) {
         if (stack == null || stack.isEmpty()) {
             return null;
         }
@@ -52,53 +52,53 @@ public class TreeHeightTests {
         return stack.peek();
     }
 
-    private static int getMinHeight_IterativeDFS(Node root) {
+    private static int getMinHeight_IterativeDFS(BinaryTreeNode root) {
         if (root == null) {
             return 0;
         }
 
         int minHeight = -1;
         int maxHeight = -1;
-        Stack<Node> nodeStack = new Stack<>();
+        Stack<BinaryTreeNode> binaryTreeNodeStack = new Stack<>();
 
-        nodeStack.push(root);
+        binaryTreeNodeStack.push(root);
 
-        while (!nodeStack.isEmpty()) {
-            Node curNode = getTopNode(nodeStack);
-            while (curNode != null && curNode.left != null) {
-                nodeStack.push(curNode.left);
-                printStack(nodeStack);
-                curNode = curNode.left;
+        while (!binaryTreeNodeStack.isEmpty()) {
+            BinaryTreeNode curBinaryTreeNode = getTopNode(binaryTreeNodeStack);
+            while (curBinaryTreeNode != null && curBinaryTreeNode.left != null) {
+                binaryTreeNodeStack.push(curBinaryTreeNode.left);
+                printStack(binaryTreeNodeStack);
+                curBinaryTreeNode = curBinaryTreeNode.left;
             }
 
-            curNode = getTopNode(nodeStack);
+            curBinaryTreeNode = getTopNode(binaryTreeNodeStack);
 
-            if (TreeHelper.isLeafNode(curNode)) {
-                if (maxHeight < 0 || maxHeight < nodeStack.size()) {
-                    maxHeight = nodeStack.size();
+            if (TreeHelper.isLeafNode(curBinaryTreeNode)) {
+                if (maxHeight < 0 || maxHeight < binaryTreeNodeStack.size()) {
+                    maxHeight = binaryTreeNodeStack.size();
                 }
-                if (minHeight < 0 || minHeight > nodeStack.size()) {
-                    minHeight = nodeStack.size();
+                if (minHeight < 0 || minHeight > binaryTreeNodeStack.size()) {
+                    minHeight = binaryTreeNodeStack.size();
                 }
 
-                Node topNode;
+                BinaryTreeNode topBinaryTreeNode;
                 do {
-                    curNode = nodeStack.pop();
-                    printStack(nodeStack);
+                    curBinaryTreeNode = binaryTreeNodeStack.pop();
+                    printStack(binaryTreeNodeStack);
 
-                    topNode = getTopNode(nodeStack);
-                    if (topNode == null) {
+                    topBinaryTreeNode = getTopNode(binaryTreeNodeStack);
+                    if (topBinaryTreeNode == null) {
                         break;
                     }
-                    if (!TreeHelper.isLastChild(topNode, curNode)) {
-                        nodeStack.push(topNode.right);
-                        printStack(nodeStack);
+                    if (!TreeHelper.isLastChild(topBinaryTreeNode, curBinaryTreeNode)) {
+                        binaryTreeNodeStack.push(topBinaryTreeNode.right);
+                        printStack(binaryTreeNodeStack);
                         break;
                     }
                 } while (true);
             } else {
-                nodeStack.push(curNode.right);
-                printStack(nodeStack);
+                binaryTreeNodeStack.push(curBinaryTreeNode.right);
+                printStack(binaryTreeNodeStack);
             }
         }
 
@@ -108,39 +108,39 @@ public class TreeHeightTests {
         return minHeight;
     }
 
-    private static int getMinHeight_IterativeBFS(Node root) {
+    private static int getMinHeight_IterativeBFS(BinaryTreeNode root) {
         if (root == null) {
             return 0;
         }
 
         int minHeight = 0;
         int height = 0;
-        List<Node> levelNodes = new ArrayList<>();
-        List<Node> childNodes = new ArrayList<>();
+        List<BinaryTreeNode> levelBinaryTreeNodes = new ArrayList<>();
+        List<BinaryTreeNode> childBinaryTreeNodes = new ArrayList<>();
 
-        levelNodes.add(root);
+        levelBinaryTreeNodes.add(root);
         height = 0;
 
-        while (!levelNodes.isEmpty()) {
-            Node curNode = levelNodes.remove(0);
+        while (!levelBinaryTreeNodes.isEmpty()) {
+            BinaryTreeNode curBinaryTreeNode = levelBinaryTreeNodes.remove(0);
 
-            if (TreeHelper.isLeafNode(curNode)) {
+            if (TreeHelper.isLeafNode(curBinaryTreeNode)) {
                 if (minHeight <= 0 || height < minHeight) {
                     minHeight = height + 1;
                 }
             }
 
-            if (curNode.left != null) {
-                childNodes.add(curNode.left);
+            if (curBinaryTreeNode.left != null) {
+                childBinaryTreeNodes.add(curBinaryTreeNode.left);
             }
-            if (curNode.right != null) {
-                childNodes.add(curNode.right);
+            if (curBinaryTreeNode.right != null) {
+                childBinaryTreeNodes.add(curBinaryTreeNode.right);
             }
 
-            if (levelNodes.isEmpty()) {
+            if (levelBinaryTreeNodes.isEmpty()) {
                 height++;
-                levelNodes.addAll(childNodes);
-                childNodes.clear();
+                levelBinaryTreeNodes.addAll(childBinaryTreeNodes);
+                childBinaryTreeNodes.clear();
             }
         }
 
