@@ -1,6 +1,6 @@
 package tree;
 
-import java.util.Stack;
+import java.util.*;
 
 public class TreeHelper {
     public static boolean isLastChild(BinaryTreeNode parent, BinaryTreeNode child) {
@@ -145,5 +145,90 @@ public class TreeHelper {
         }
 
         return stack.peek();
+    }
+
+    public static void levelOrder_Iterative(BinaryTreeNode root, INodeOperation nodeOperation) {
+        if (root == null) {
+            return;
+        }
+
+        Queue<BinaryTreeNode> nodes = new LinkedList<>();
+
+        nodes.add(root);
+        while (false == nodes.isEmpty()) {
+            BinaryTreeNode node = nodes.remove();
+
+            nodeOperation.run(node);
+
+            if (node.left != null) {
+                nodes.add(node.left);
+            }
+            if (node.right != null) {
+                nodes.add(node.right);
+            }
+        }
+    }
+
+    public static void levelWiseTraversal(BinaryTreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        Queue<BinaryTreeNode> nodes = new LinkedList<>();
+
+        nodes.add(root);
+        do {
+            Queue<BinaryTreeNode> childNodes = new LinkedList<>();
+
+            while (false == nodes.isEmpty()) {
+                BinaryTreeNode node = nodes.remove();
+                System.out.print(node.value + " ");
+
+                if (node.left != null) {
+                    childNodes.add(node.left);
+                }
+                if (node.right != null) {
+                    childNodes.add(node.right);
+                }
+            }
+
+            if (childNodes.isEmpty()) {
+                break;
+            }
+
+            nodes.addAll(childNodes);
+            childNodes.clear();
+            System.out.println();
+        } while (true);
+    }
+
+    public static void levelWiseTraversal_SingleQueue(BinaryTreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        Queue<BinaryTreeNode> nodes = new LinkedList<>();
+
+        nodes.add(root);
+        nodes.add(null);
+        while (false == nodes.isEmpty()) {
+            BinaryTreeNode node = nodes.remove();
+            if (node == null) {
+                if (false == nodes.isEmpty()) {
+                    nodes.add(null);
+                    System.out.println();
+                }
+                continue;
+            }
+
+            System.out.print(node.value + " ");
+
+            if (node.left != null) {
+                nodes.add(node.left);
+            }
+            if (node.right != null) {
+                nodes.add(node.right);
+            }
+        }
     }
 }

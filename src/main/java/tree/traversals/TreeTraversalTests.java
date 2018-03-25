@@ -57,5 +57,17 @@ public class TreeTraversalTests {
         System.out.print("Post-order (Iterative) ");
         TreeHelper.postOrder_Iterative(root, node -> System.out.print(node.value + " "));
         System.out.println();
+
+        System.out.print("Level-order (Iterative) ");
+        TreeHelper.levelOrder_Iterative(root, node -> System.out.print(node.value + " "));
+        System.out.println();
+
+        System.out.print("Level-wise Traversal (Iterative) ");
+        TreeHelper.levelWiseTraversal(root);
+        System.out.println();
+
+        System.out.print("Level-wise Traversal (Iterative, with single queue) ");
+        TreeHelper.levelWiseTraversal_SingleQueue(root);
+        System.out.println();
     }
 }
