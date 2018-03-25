@@ -1,4 +1,4 @@
-package tree.tree_height;
+package tree.height;
 
 import java.util.*;
 
@@ -15,7 +15,7 @@ public class TreeHeightTests {
                                         new BinaryTreeNode(13, null, null)),
                                 null),
                         new BinaryTreeNode(5,
-                                new BinaryTreeNode(9, null, null),
+                                null,
                                 null)),
                 new BinaryTreeNode(3,
                         new BinaryTreeNode(6,
@@ -33,7 +33,11 @@ public class TreeHeightTests {
     public static void main(String[] args) {
         BinaryTreeNode root = createTree();
 
-        System.out.println("min height = " + getMinHeight_IterativeDFS(root));
+        System.out.println("Max Height (Recursive) = " + TreeHelper.maxHeight_Recursive(root));
+        System.out.println("Max Height (Iterative) = " + TreeHelper.maxHeight_Iterative(root));
+
+        System.out.println("Min Height (Recursive) = " + TreeHelper.minHeight_Recursive(root));
+        System.out.println("Min Height (Iterative) = " + TreeHelper.minHeight_Iterative(root));
     }
 
     private static void printStack(Stack<BinaryTreeNode> stack) {

@@ -231,4 +231,137 @@ public class TreeHelper {
             }
         }
     }
+
+    public static int maxHeight_Recursive(BinaryTreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int leftHeight = maxHeight_Recursive(root.left);
+        int rightHeight = maxHeight_Recursive(root.right);
+        return (1 + ((leftHeight > rightHeight) ? leftHeight : rightHeight));
+    }
+
+    public static int maxHeight_Iterative(BinaryTreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        Queue<BinaryTreeNode> nodes = new LinkedList<>();
+
+        int height = 1;
+        int maxHeight = -1;
+
+        nodes.add(root);
+        nodes.add(null);
+
+        while (false == nodes.isEmpty()) {
+            BinaryTreeNode node = nodes.remove();
+            if (node == null) {
+                if (false == nodes.isEmpty()) {
+                    nodes.add(null);
+                    height++;
+
+                    if (maxHeight < 0 || maxHeight < height) {
+                        maxHeight = height;
+                    }
+                }
+                continue;
+            }
+
+            if (node.left != null) {
+                nodes.add(node.left);
+            }
+            if (node.right != null) {
+                nodes.add(node.right);
+            }
+        }
+
+        return maxHeight;
+    }
+
+    public static int minHeight_Recursive(BinaryTreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        int leftHeight = maxHeight_Recursive(root.left);
+        int rightHeight = maxHeight_Recursive(root.right);
+        return (1 + ((leftHeight > rightHeight) ? rightHeight : leftHeight));
+    }
+
+    public static int minHeight_Iterative(BinaryTreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        Queue<BinaryTreeNode> nodes = new LinkedList<>();
+
+        int height = 1;
+        int minHeight = -1;
+
+        nodes.add(root);
+        nodes.add(null);
+
+        while (false == nodes.isEmpty()) {
+            BinaryTreeNode node = nodes.remove();
+            if (node == null) {
+                if (false == nodes.isEmpty()) {
+                    nodes.add(null);
+                    height++;
+                }
+                continue;
+            }
+
+            if (isLeafNode(node)) {
+                minHeight = height;
+                return minHeight;
+            }
+
+            if (node.left != null) {
+                nodes.add(node.left);
+            }
+            if (node.right != null) {
+                nodes.add(node.right);
+            }
+        }
+
+        return height;
+    }
+
+    public static boolean isFoldableTree(BinaryTreeNode root) {
+        if (root == null) {
+            return false;
+        }
+
+        return isFoldableTreeInternal(root.left, root.right);
+    }
+
+    private static boolean isFoldableTreeInternal(BinaryTreeNode root1, BinaryTreeNode root2) {
+        if (root1 == null && root2 == null) {
+            return true;
+        }
+
+        if (root1 == null || root2 == null) {
+            return false;
+        }
+
+        if (root1.left == null && root2.right == null) {
+            if (root1.right == null && root2.left == null) {
+                return true;
+            }
+
+            if (root1.right == null || root2.left == null) {
+                return false;
+            }
+
+            return isFoldableTreeInternal(root1.left, root2.right);
+        }
+
+        if (root1.left == null || root2.right == null) {
+            return false;
+        }
+
+        return isFoldableTreeInternal(root1.left, root2.right);
+    }
 }

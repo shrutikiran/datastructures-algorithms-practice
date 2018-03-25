@@ -69,5 +69,17 @@ public class TreeTraversalTests {
         System.out.print("Level-wise Traversal (Iterative, with single queue) ");
         TreeHelper.levelWiseTraversal_SingleQueue(root);
         System.out.println();
+
+        {
+            BinaryTreeNode node = new BinaryTreeNode(1,
+                    new BinaryTreeNode(2,
+                            null,
+                            new BinaryTreeNode(4, null, null)),
+                    new BinaryTreeNode(3,
+                            new BinaryTreeNode(5, null, null),
+                            null));
+            System.out.println("Is Tree foldable? " + TreeHelper.isFoldableTree(node));
+            System.out.println();
+        }
     }
 }
