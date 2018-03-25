@@ -35,41 +35,27 @@ public class TreeTraversalTests {
         BinaryTreeNode root = createTree();
 
         System.out.print("Pre-order (Recursive) ");
-        TreeHelper.preOrder_Recursive(root, new INodeOperation() {
-            @Override
-            public void run(BinaryTreeNode node) {
-                System.out.print(node.value);
-            }
-        });
+        TreeHelper.preOrder_Recursive(root, node -> System.out.print(node.value + " "));
         System.out.println();
 
         System.out.print("Pre-order (Iterative) ");
-        TreeHelper.preOrder_Iterative(root);
+        TreeHelper.preOrder_Iterative(root, node -> System.out.print(node.value + " "));
         System.out.println();
 
         System.out.print("In-order (Recursive) ");
-        TreeHelper.inOrder_Recursive(root, new INodeOperation() {
-            @Override
-            public void run(BinaryTreeNode node) {
-                System.out.print(node.value);
-            }
-        });
+        TreeHelper.inOrder_Recursive(root, node -> System.out.print(node.value + " "));
         System.out.println();
 
         System.out.print("In-order (Iterative) ");
-        TreeHelper.inOrder_Iterative(root);System.out.println();
+        TreeHelper.inOrder_Iterative(root, node -> System.out.print(node.value + " "));
+        System.out.println();
 
         System.out.print("Post-order (Recursive) ");
-        TreeHelper.postOrder_Recursive(root, new INodeOperation() {
-            @Override
-            public void run(BinaryTreeNode node) {
-                System.out.print(node.value);
-            }
-        });
+        TreeHelper.postOrder_Recursive(root, node -> System.out.print(node.value + " "));
         System.out.println();
 
         System.out.print("Post-order (Iterative) ");
-        TreeHelper.postOrder_Iterative(root);
+        TreeHelper.postOrder_Iterative(root, node -> System.out.print(node.value + " "));
         System.out.println();
     }
 }

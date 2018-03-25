@@ -55,125 +55,88 @@ public class TreeHelper {
         nodeOperation.run(root);
     }
 
-    // TODO: Make the loop wrt node, not stack
-    public static void postOrder_Iterative(BinaryTreeNode root) {
+    public static void postOrder_Iterative(BinaryTreeNode root, INodeOperation nodeOperation) {
         if (root == null) {
             return;
         }
 
-        Stack<BinaryTreeNode> binaryTreeNodeStack = new Stack<>();
+        Stack<BinaryTreeNode> nodeStack = new Stack<>();
 
-        binaryTreeNodeStack.push(root);
-
-        while (!binaryTreeNodeStack.isEmpty()) {
-            BinaryTreeNode curBinaryTreeNode = getTopNode(binaryTreeNodeStack);
-            while (curBinaryTreeNode != null && curBinaryTreeNode.left != null) {
-                binaryTreeNodeStack.push(curBinaryTreeNode.left);
-                curBinaryTreeNode = curBinaryTreeNode.left;
+        while (true) {
+            while (root != null) {
+                nodeStack.push(root);
+                root = root.left;
             }
 
-            curBinaryTreeNode = getTopNode(binaryTreeNodeStack);
+            if (nodeStack.isEmpty()) {
+                break;
+            }
 
-            if (isLeafNode(curBinaryTreeNode)) {
-                BinaryTreeNode topBinaryTreeNode;
-                do {
-                    curBinaryTreeNode = binaryTreeNodeStack.pop();
-                    System.out.print(curBinaryTreeNode.value + " ");
+            BinaryTreeNode topNode = getTopNode(nodeStack);
+            if (false == isLeafNode(topNode)) {
+                root = topNode.right;
+                continue;
+            }
 
-                    topBinaryTreeNode = getTopNode(binaryTreeNodeStack);
-                    if (topBinaryTreeNode == null) {
-                        break;
-                    }
-                    if (!isLastChild(topBinaryTreeNode, curBinaryTreeNode)) {
-                        binaryTreeNodeStack.push(topBinaryTreeNode.right);
-                        break;
-                    }
-                } while (true);
+            BinaryTreeNode node = nodeStack.pop();
+            nodeOperation.run(node);
+
+            for (topNode = getTopNode(nodeStack); isLastChild(topNode, node); topNode = getTopNode(nodeStack)) {
+                node = nodeStack.pop();
+                nodeOperation.run(node);
+            }
+
+            if (nodeStack.isEmpty()) {
+                root = null;
             } else {
-                binaryTreeNodeStack.push(curBinaryTreeNode.right);
+                root = topNode.right;
             }
         }
     }
 
-    // TODO: Get it to work
-    public static void inOrder_Iterative(BinaryTreeNode root) {
+    public static void inOrder_Iterative(BinaryTreeNode root, INodeOperation nodeOperation) {
         if (root == null) {
             return;
         }
 
-        Stack<BinaryTreeNode> binaryTreeNodeStack = new Stack<>();
+        Stack<BinaryTreeNode> nodeStack = new Stack<>();
 
-        binaryTreeNodeStack.push(root);
-
-        while (!binaryTreeNodeStack.isEmpty()) {
-            BinaryTreeNode curBinaryTreeNode = getTopNode(binaryTreeNodeStack);
-            while (curBinaryTreeNode != null && curBinaryTreeNode.left != null) {
-                binaryTreeNodeStack.push(curBinaryTreeNode.left);
-                curBinaryTreeNode = curBinaryTreeNode.left;
+        while (true) {
+            while (root != null) {
+                nodeStack.push(root);
+                root = root.left;
             }
 
-            curBinaryTreeNode = getTopNode(binaryTreeNodeStack);
-
-            if (isLeafNode(curBinaryTreeNode)) {
-                BinaryTreeNode topBinaryTreeNode;
-                do {
-                    curBinaryTreeNode = binaryTreeNodeStack.pop();
-                    System.out.print(curBinaryTreeNode.value + " ");
-
-                    topBinaryTreeNode = getTopNode(binaryTreeNodeStack);
-                    if (topBinaryTreeNode == null) {
-                        break;
-                    }
-                    System.out.print(topBinaryTreeNode.value + " ");
-                    if (!isLastChild(topBinaryTreeNode, curBinaryTreeNode)) {
-                        binaryTreeNodeStack.push(topBinaryTreeNode.right);
-                        break;
-                    }
-                } while (true);
-            } else {
-                binaryTreeNodeStack.push(curBinaryTreeNode.right);
+            if (nodeStack.isEmpty()) {
+                break;
             }
+
+            root = nodeStack.pop();
+            nodeOperation.run(root);
+            root = root.right;
         }
     }
 
-    // TODO: Make the loop wrt node, not stack
-    public static void preOrder_Iterative(BinaryTreeNode root) {
+    public static void preOrder_Iterative(BinaryTreeNode root, INodeOperation nodeOperation) {
         if (root == null) {
             return;
         }
 
-        Stack<BinaryTreeNode> binaryTreeNodeStack = new Stack<>();
+        Stack<BinaryTreeNode> nodeStack = new Stack<>();
 
-        binaryTreeNodeStack.push(root);
-
-        while (!binaryTreeNodeStack.isEmpty()) {
-            BinaryTreeNode curBinaryTreeNode = getTopNode(binaryTreeNodeStack);
-            while (curBinaryTreeNode != null && curBinaryTreeNode.left != null) {
-                System.out.print(curBinaryTreeNode.value + " ");
-                binaryTreeNodeStack.push(curBinaryTreeNode.left);
-                curBinaryTreeNode = curBinaryTreeNode.left;
+        while (true) {
+            while (root != null) {
+                nodeOperation.run(root);
+                nodeStack.push(root);
+                root = root.left;
             }
 
-            curBinaryTreeNode = getTopNode(binaryTreeNodeStack);
-            System.out.print(curBinaryTreeNode.value + " ");
-
-            if (isLeafNode(curBinaryTreeNode)) {
-                BinaryTreeNode topBinaryTreeNode;
-                do {
-                    curBinaryTreeNode = binaryTreeNodeStack.pop();
-
-                    topBinaryTreeNode = getTopNode(binaryTreeNodeStack);
-                    if (topBinaryTreeNode == null) {
-                        break;
-                    }
-                    if (!isLastChild(topBinaryTreeNode, curBinaryTreeNode)) {
-                        binaryTreeNodeStack.push(topBinaryTreeNode.right);
-                        break;
-                    }
-                } while (true);
-            } else {
-                binaryTreeNodeStack.push(curBinaryTreeNode.right);
+            if (nodeStack.isEmpty()) {
+                break;
             }
+
+            root = nodeStack.pop();
+            root = root.right;
         }
     }
 
