@@ -1,7 +1,6 @@
 package tree.traversals;
 
 import tree.BinaryTreeNode;
-import tree.INodeOperation;
 import tree.TreeHelper;
 
 public class TreeTraversalTests {
@@ -76,9 +75,25 @@ public class TreeTraversalTests {
                             null,
                             new BinaryTreeNode(4, null, null)),
                     new BinaryTreeNode(3,
-                            new BinaryTreeNode(5, null, null),
-                            null));
+                            new BinaryTreeNode(12, null, null),
+                            new BinaryTreeNode(5, null, null)));
             System.out.println("Is Tree foldable? " + TreeHelper.isFoldableTree(node));
+            System.out.println();
+        }
+
+        {
+            BinaryTreeNode node = new BinaryTreeNode(1,
+                    new BinaryTreeNode(2,
+                            null,
+                            new BinaryTreeNode(4, null, null)),
+                    new BinaryTreeNode(3,
+                            new BinaryTreeNode(12, null, null),
+                            new BinaryTreeNode(5, null, null)));
+            BinaryTreeNode node1 = node.right.left;
+            BinaryTreeNode node2 = node.right.right;
+
+            BinaryTreeNode lca = TreeHelper.findLeastCommonAncestor(node, node1, node2);
+            System.out.println("Least Common Ancestor of " + node1.value + " and " + node2.value + ": " + ((lca != null) ? lca.value : "null"));
             System.out.println();
         }
     }

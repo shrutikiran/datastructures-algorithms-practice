@@ -285,8 +285,8 @@ public class TreeHelper {
             return 0;
         }
 
-        int leftHeight = maxHeight_Recursive(root.left);
-        int rightHeight = maxHeight_Recursive(root.right);
+        int leftHeight = minHeight_Recursive(root.left);
+        int rightHeight = minHeight_Recursive(root.right);
         return (1 + ((leftHeight > rightHeight) ? rightHeight : leftHeight));
     }
 
@@ -346,22 +346,72 @@ public class TreeHelper {
             return false;
         }
 
-        if (root1.left == null && root2.right == null) {
-            if (root1.right == null && root2.left == null) {
-                return true;
-            }
+        return isFoldableTreeInternal(root1.left, root2.right) && isFoldableTreeInternal(root1.right, root2.left);
+    }
 
-            if (root1.right == null || root2.left == null) {
-                return false;
-            }
-
-            return isFoldableTreeInternal(root1.left, root2.right);
+    public static BinaryTreeNode findLeastCommonAncestor(BinaryTreeNode root, BinaryTreeNode node1, BinaryTreeNode node2) {
+        if (root == null) {
+            return null;
         }
 
-        if (root1.left == null || root2.right == null) {
-            return false;
+        if (root == node1 || root == node2) {
+            return root;
         }
 
-        return isFoldableTreeInternal(root1.left, root2.right);
+        BinaryTreeNode temp1, temp2;
+
+        temp1 = findLeastCommonAncestor(root.left, node1, node2);
+        temp2 = findLeastCommonAncestor(root.right, node1, node2);
+        if (temp1 != null && temp2 != null) {
+            return root;
+        }
+
+        return (temp1 != null) ? temp1 : temp2;
+    }
+
+    public static BinaryTreeNode findNode_Recursive(BinaryTreeNode root, BinaryTreeNode node) {
+        if (root == null || node == null) {
+            return null;
+        }
+
+        if (root == node) {
+            return root;
+        }
+
+        BinaryTreeNode temp = findNode_Recursive(root.left, node);
+        return (temp != null) ? temp : findNode_Recursive(root.right, node);
+    }
+
+    public static BinaryTreeNode findNode_Iterative(BinaryTreeNode root, BinaryTreeNode node) {
+        if (root == null || node == null) {
+            return null;
+        }
+
+        Queue<BinaryTreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (false == queue.isEmpty()) {
+            BinaryTreeNode temp = queue.remove();
+            if (temp == node) {
+                return root;
+            }
+
+            if (temp.left != null) {
+                queue.add(temp.left);
+            }
+
+            if (temp.right != null) {
+                queue.add(temp.right);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Created by kirn on 3/25/18.
+     */
+    public static interface INodeOperation {
+        void run(BinaryTreeNode node);
     }
 }
