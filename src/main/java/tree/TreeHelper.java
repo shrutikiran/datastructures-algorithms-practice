@@ -408,6 +408,40 @@ public class TreeHelper {
         return null;
     }
 
+    public static boolean isBalancedTree_Recursive(BinaryTreeNode root) {
+        if (root == null) {
+            return true;
+        }
+
+        int lHeight = maxHeight_Recursive(root.left);
+        int rHeight = maxHeight_Recursive(root.right);
+        int delta = (lHeight > rHeight) ? lHeight - rHeight : rHeight - lHeight;
+
+        if (delta > 1) {
+            System.out.print("(imbalance detected at node = " + root.value + ")");
+            return false;
+        }
+
+        return isBalancedTree_Recursive(root.left) && isBalancedTree_Recursive(root.right);
+    }
+
+    public static boolean isBalancedTree_Iterative(BinaryTreeNode root) {
+        if (root == null) {
+            return true;
+        }
+
+        int lHeight = maxHeight_Iterative(root.left);
+        int rHeight = maxHeight_Iterative(root.right);
+        int delta = (lHeight > rHeight) ? lHeight - rHeight : rHeight - lHeight;
+
+        if (delta > 1) {
+            System.out.print("(imbalance detected at node = " + root.value + ")");
+            return false;
+        }
+
+        return isBalancedTree_Recursive(root.left) && isBalancedTree_Recursive(root.right);
+    }
+
     /**
      * Created by kirn on 3/25/18.
      */
