@@ -418,7 +418,7 @@ public class TreeHelper {
         int delta = (lHeight > rHeight) ? lHeight - rHeight : rHeight - lHeight;
 
         if (delta > 1) {
-            System.out.print("(imbalance detected at node = " + root.value + ")");
+            System.out.print("(imbalance detected at node " + root.value + ")");
             return false;
         }
 
@@ -430,16 +430,31 @@ public class TreeHelper {
             return true;
         }
 
-        int lHeight = maxHeight_Iterative(root.left);
-        int rHeight = maxHeight_Iterative(root.right);
-        int delta = (lHeight > rHeight) ? lHeight - rHeight : rHeight - lHeight;
+        Stack<BinaryTreeNode> nodeStack = new Stack<>();
 
-        if (delta > 1) {
-            System.out.print("(imbalance detected at node = " + root.value + ")");
-            return false;
+        while (true) {
+            while (root != null) {
+                nodeStack.push(root);
+                root = root.left;
+            }
+
+            if (nodeStack.isEmpty()) {
+                break;
+            }
+
+            root = nodeStack.pop();
+            int lHeight = maxHeight_Iterative(root.left);
+            int rHeight = maxHeight_Iterative(root.right);
+            int delta = (lHeight > rHeight) ? lHeight - rHeight : rHeight - lHeight;
+            if (delta > 1) {
+                System.out.print("(imbalance detected at node " + root.value + ")");
+                return false;
+            }
+
+            root = root.right;
         }
 
-        return isBalancedTree_Recursive(root.left) && isBalancedTree_Recursive(root.right);
+        return true;
     }
 
     /**

@@ -33,13 +33,13 @@ public class TreeHeightTests {
     private static BinaryTreeNode createBalancedTree() {
         BinaryTreeNode root = new BinaryTreeNode(1,
                 new BinaryTreeNode(2,
-                        new BinaryTreeNode(4,null, null),
+                        new BinaryTreeNode(4,
+                                new BinaryTreeNode(6, null, null),
+                                null),
                         null),
                 new BinaryTreeNode(3,
-                        new BinaryTreeNode(5,
-                                null,
-                                new BinaryTreeNode(6, null, null)),
-                        new BinaryTreeNode(7, null, null)));
+                        null,
+                        new BinaryTreeNode(5,null,null)));
 
         return root;
     }
@@ -54,10 +54,9 @@ public class TreeHeightTests {
         System.out.println("Min Height (Iterative) = " + TreeHelper.minHeight_Iterative(root));
 
         {
-            System.out.println("Is Balanced (Recursive) = " + TreeHelper.isBalancedTree_Recursive(root));
-
             root = createBalancedTree();
             System.out.println("Is Balanced (Recursive) = " + TreeHelper.isBalancedTree_Recursive(root));
+            System.out.println("Is Balanced (Iterative) = " + TreeHelper.isBalancedTree_Iterative(root));
         }
     }
 }
