@@ -60,6 +60,30 @@ public class NumberTests {
         return n * factorial_Recursive(n - 1);
     }
 
+    public static int fibonacci_Iterative(int n) {
+        if (n <= 1) {
+            return n;
+        }
+
+        int sum = 0;
+        int a = 0, b = 1;
+        while (--n > 0) {
+            sum = a + b;
+            a = b;
+            b = sum;
+        }
+
+        return sum;
+    }
+
+    public static int fibonacci_Recursive(int n) {
+        if (n <= 1) {
+            return n;
+        }
+
+        return fibonacci_Recursive(n - 1) + fibonacci_Recursive(n - 2);
+    }
+
     public static void main(String[] arg) {
 
         {
@@ -85,6 +109,14 @@ public class NumberTests {
             System.out.println("Factorials");
             System.out.println("factorial(5): " + factorial_Iterative(5));
             System.out.println("factorial(5): " + factorial_Recursive(5));
+            System.out.println();
+        }
+
+        {
+            /* Fibonacci */
+            System.out.println("Fibonacci");
+            System.out.print("fibonacci 10 (iterative): " + fibonacci_Iterative(10));System.out.println();
+            System.out.print("fibonacci 10 (recursive): " + fibonacci_Recursive(10));System.out.println();
         }
     }
 }
