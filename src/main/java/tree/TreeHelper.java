@@ -8,6 +8,7 @@ public class TreeHelper {
             return false;
         }
 
+        // if parent node' right subtree is null or if this node is the right subtree, then its the last child in a binary tree
         return (parent.right == null || parent.right == child);
     }
 
@@ -16,75 +17,100 @@ public class TreeHelper {
             return false;
         }
 
+        // true, if both the right and left subtrees are null
         return (binaryTreeNode.left == null && binaryTreeNode.right == null);
     }
 
+    // Time Complexity: O(n) since it visits all n nodes. Space Complexity: O(n) since it requires that many recursive calls.
     public static void preOrder_Recursive(BinaryTreeNode root, INodeOperation nodeOperation) {
         if (root == null) {
             return;
         }
 
+        // first, operate on the current node ...
         nodeOperation.run(root);
 
+        // ... then the left subtree...
         preOrder_Recursive(root.left, nodeOperation);
 
+        // ... and, then the right subtree.
         preOrder_Recursive(root.right, nodeOperation);
     }
 
+    // Time Complexity: O(n) since it visits all n nodes. Space Complexity: O(n) since it requires that many recursive calls.
     public static void inOrder_Recursive(BinaryTreeNode root, INodeOperation nodeOperation) {
         if (root == null) {
             return;
         }
 
+        // traverse the left subtree ..
         inOrder_Recursive(root.left, nodeOperation);
 
+        // ... then, operate on the current node..
         nodeOperation.run(root);
 
+        // ... and then the right subtree...
         inOrder_Recursive(root.right, nodeOperation);
     }
 
+    // Time Complexity: O(n) since it visits all n nodes. Space Complexity: O(n) since it requires that many recursive calls.
     public static void postOrder_Recursive(BinaryTreeNode root, INodeOperation nodeOperation) {
         if (root == null) {
             return;
         }
 
+        // first, traverse the left subtree ..
         postOrder_Recursive(root.left, nodeOperation);
 
+        // ... and, then the right subtree ..
         postOrder_Recursive(root.right, nodeOperation);
 
+        // ... and, then operate upon the current node
         nodeOperation.run(root);
     }
 
+    // Time Complexity: O(n) since it visits all n nodes. Space Complexity: O(n) since it requires that many entries in the stack
     public static void postOrder_Iterative(BinaryTreeNode root, INodeOperation nodeOperation) {
         if (root == null) {
             return;
         }
 
+        // create a stack explicitly, since we do not use recursion..
         Stack<BinaryTreeNode> nodeStack = new Stack<>();
 
         while (true) {
+            // drill down the left subtree, collecting the nodes into the stack..,
             while (root != null) {
                 nodeStack.push(root);
                 root = root.left;
             }
 
+            // break out if the stack is empty => nothing to process.
             if (nodeStack.isEmpty()) {
                 break;
             }
 
+            // we have hit past the left most node... so, peek into the topmost node in the stack.
             BinaryTreeNode topNode = getTopNode(nodeStack);
+
+            // ... if that node is not a leaf node, then we need to take care of the right subtree...
             if (false == isLeafNode(topNode)) {
                 root = topNode.right;
                 continue;
             }
 
+            // now, we have hit the leaf node, we need to unwind now..
             BinaryTreeNode node = null;
 
+            // unwind each of the nodes on the stack, as long as they are the last child ...
             for (topNode = getTopNode(nodeStack); isLastChild(topNode, node); topNode = getTopNode(nodeStack)) {
                 node = nodeStack.pop();
+
+                // ... and, operate upon the node that is being popped
                 nodeOperation.run(node);
             }
 
+            // if no more nodes exist to process, set root to null; otherwise, set it to root...
             if (nodeStack.isEmpty()) {
                 root = null;
             } else {
@@ -93,48 +119,65 @@ public class TreeHelper {
         }
     }
 
+    // Time Complexity: O(n) since it visits all n nodes. Space Complexity: O(n) since it requires that many entries in the stack
     public static void inOrder_Iterative(BinaryTreeNode root, INodeOperation nodeOperation) {
         if (root == null) {
             return;
         }
 
+        // create a stack explicitly to be used..
         Stack<BinaryTreeNode> nodeStack = new Stack<>();
 
         while (true) {
+            // traverse the left subtree and collect the nodes into the stack...
             while (root != null) {
                 nodeStack.push(root);
                 root = root.left;
             }
 
+            // check if the stack is empty, nothing to process, break out
             if (nodeStack.isEmpty()) {
                 break;
             }
 
+            // we have hit past the left most node. so, pop it out and operate upon
             root = nodeStack.pop();
             nodeOperation.run(root);
+
+            // ... and, remember to traverse its right subtree
             root = root.right;
         }
     }
 
+    // Time Complexity: O(n) since it visits all n nodes. Space Complexity: O(n) since it requires that many entries in the stack
     public static void preOrder_Iterative(BinaryTreeNode root, INodeOperation nodeOperation) {
         if (root == null) {
             return;
         }
 
+        // create a stack explicitly
         Stack<BinaryTreeNode> nodeStack = new Stack<>();
 
         while (true) {
+            // traverse the left subtree ...
             while (root != null) {
+                // ... and, operate upon the node ...
                 nodeOperation.run(root);
+
+                // ... and push them onto the stack
                 nodeStack.push(root);
                 root = root.left;
             }
 
+            // nothing to process, if stack is empty; break out
             if (nodeStack.isEmpty()) {
                 break;
             }
 
+            // we have hit past the last left subtree. so, pop out the top most node
             root = nodeStack.pop();
+
+            // and, remember to visit its right subtree
             root = root.right;
         }
     }
