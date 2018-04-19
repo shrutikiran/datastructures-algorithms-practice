@@ -500,6 +500,28 @@ public class TreeHelper {
         return true;
     }
 
+    public static BinaryTreeNode makeBinarySearchTree(int[] sortedInput) {
+        if (sortedInput == null || sortedInput.length <= 0) {
+            return null;
+        }
+
+        return makeBinarySearchTree(sortedInput, 0, sortedInput.length);
+    }
+
+    private static BinaryTreeNode makeBinarySearchTree(int[] sortedInput, int startIx, int endIx) {
+        if (startIx >= endIx) {
+            return null;
+        }
+
+        int midIx = startIx + (endIx - startIx) / 2;
+
+        BinaryTreeNode node = new BinaryTreeNode(sortedInput[midIx], null, null);
+        node.left = makeBinarySearchTree(sortedInput, startIx, midIx);
+        node.right = makeBinarySearchTree(sortedInput, midIx + 1, endIx);
+
+        return node;
+    }
+
     /**
      * Created by kirn on 3/25/18.
      */
