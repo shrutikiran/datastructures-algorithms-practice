@@ -13,7 +13,7 @@ public class BSTTests {
         {
             /* Make a binary search tree out of a sorted array */
 
-            System.out.println("Binary Search Tree from a sorted array: ");
+            System.out.print("Binary Search Tree from a sorted array: ");
 
             int[] input = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
@@ -30,6 +30,9 @@ public class BSTTests {
                     System.out.println("Not same");
                 }
             }
+
+            System.out.println("Level wise traversal: ");
+            TreeHelper.levelWiseTraversal_SingleQueue(root);
 
             System.out.println();
         }
